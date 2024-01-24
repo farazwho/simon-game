@@ -5,10 +5,19 @@ var gamePattern = [];
 //array of button colors
 const  buttonColors = ["red", "blue", "green", "yellow"];
 var level = 0;
-
+var score = 0;
+var highScore = 0;
 ///////// event listener to start game /////////
 
 $(document).on("keypress", function()
+{
+  if(level == 0)
+  {
+    nextSequence();
+  }
+});
+
+$(document).on("click", function()
 {
   if(level == 0)
   {
@@ -79,7 +88,12 @@ function checkAnswer(currentLevel)
         nextSequence();
       }, 1000);
     }
-
+    score += 5;
+    if(score >= highScore)
+    {
+      highScore=score;
+      $("#score").text(highScore);
+    }
   }
   //if user messes up, game over feedback
   //startOver function called
@@ -104,4 +118,5 @@ function startOver()
 {
   level = 0 ;
   gamePattern = [];
+  score = 0;
 }
