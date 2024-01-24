@@ -17,6 +17,14 @@ $(document).on("keypress", function()
   }
 });
 
+$(document).on("click", function()
+{
+  if(level == 0)
+  {
+    nextSequence();
+  }
+});
+
 ///////// sound and animation on button click /////////
 ///////// records user click pattern /////////
 
